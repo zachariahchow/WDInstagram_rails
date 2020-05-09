@@ -1,24 +1,25 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @post.title %>
+<p id="notice">
+		<%= notice %>
 </p>
-
 <p>
-  <strong>Author:</strong>
-  <%= @post.author %>
+		<strong>Title:</strong>
+		<%= @post.title %>
 </p>
-
 <p>
-  <strong>Photo url:</strong>
-  <%= @post.photo_url %>
+		<strong>Author:</strong>
+		<%= @post.author %>
 </p>
-
 <p>
-  <strong>Caption:</strong>
-  <%= @post.caption %>
+		<strong>Photo:</strong>
+		<% if @image_exists%>
+		<%= image_tag @post.photo_url %>
+		<% else %>
+		<%= image_tag "https://www.ft.com/__origami/service/image/v2/images/raw/https%3A%2F%2Fs3-ap-northeast-1.amazonaws.com%2Fpsh-ex-ftnikkei-3937bb4%2Fimages%2F4%2F9%2F5%2F8%2F22958594-4-eng-GB%2Fpoor%20pig.jpg?source=nar-cms" %>
+		<% end %>
 </p>
-
+<p>
+		<strong>Caption:</strong>
+		<%= @post.caption %>
+</p>
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back', posts_path %>
