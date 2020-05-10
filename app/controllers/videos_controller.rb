@@ -64,8 +64,6 @@ class VideosController < ApplicationController
         format.json { render json: @video.errors, status: :unprocessable_entity }
       end
     end
-
-    @links = [{:name => "Home", :path => root_path}, {:name => "Back to Videos", :path => videos_path}]
   end
 
   # PATCH/PUT /videos/1

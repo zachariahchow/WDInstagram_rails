@@ -1,8 +1,6 @@
-<%= form_with(url: form_url, method: "get", local: true) do |form| %>
-<div>
+<div class="sort-form__container">
+		<%= form_with(url: form_url, method: "get", local: true) do |form| %>
 		<%= select_tag(:sort_by_date, options_for_select([['ascending'], ['descending']]))%>
-</div>
-<div>
 		<%= form.submit 'SORT', class: 'btn btn-primary'%>
+		<% end %>
 </div>
-<% end %>
