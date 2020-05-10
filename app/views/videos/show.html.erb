@@ -1,24 +1,25 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @video.title %>
+<p id="notice">
+		<%= notice %>
 </p>
-
 <p>
-  <strong>Author:</strong>
-  <%= @video.author %>
+		<strong>Title:</strong>
+		<%= @video.title %>
 </p>
-
 <p>
-  <strong>Video url:</strong>
-  <%= @video.video_url %>
+		<strong>Author:</strong>
+		<%= @video.author %>
 </p>
-
 <p>
-  <strong>Caption:</strong>
-  <%= @video.caption %>
+		<strong>Video:</strong>
+		<% if @video_exists%>
+		<iframe src='https://www.youtube.com/embed/<%= @youtube_id %>?rel=0&autoplay=<%= params[:autoplay] || 0 %>' frameborder='0' allowfullscreen></iframe>
+		<% else %>
+		<div>No Video</div>
+		<% end %>
 </p>
-
+<p>
+		<strong>Caption:</strong>
+		<%= @video.caption %>
+</p>
 <%= link_to 'Edit', edit_video_path(@video) %> |
 <%= link_to 'Back', videos_path %>

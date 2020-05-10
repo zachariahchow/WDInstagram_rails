@@ -4,12 +4,34 @@ class VideosController < ApplicationController
   # GET /videos
   # GET /videos.json
   def index
-    @videos = Video.all
+    def index
+      if params[:sort_by_date] == 'ascending'
+        @posts = Video.order(:created_at)
+      elsif params[:sort_by_date] == 'descending'
+        @posts = Video.order('created_at DESC')
+      else
+        @posts = Video.all
+      end
+    end
   end
 
   # GET /videos/1
   # GET /videos/1.json
   def show
+    def video_exists?(url)
+      url = URI.parse(url)
+      url.is_a?(URI::HTTP) && !url.host.nil?
+      rescue URI::InvalidURIError
+      false
+
+    end
+
+    @video = Video.find(params[:id])
+
+    if video_exists?(@video[:video_url])
+      @video_exists = true
+      @youtube_id = @video[:video_url].split('=')[1]
+    end
   end
 
   # GET /videos/new
