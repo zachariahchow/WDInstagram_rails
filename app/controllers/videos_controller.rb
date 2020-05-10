@@ -4,14 +4,12 @@ class VideosController < ApplicationController
   # GET /videos
   # GET /videos.json
   def index
-    def index
-      if params[:sort_by_date] == 'ascending'
-        @posts = Video.order(:created_at)
-      elsif params[:sort_by_date] == 'descending'
-        @posts = Video.order('created_at DESC')
-      else
-        @posts = Video.all
-      end
+    if params[:sort_by_date] == 'ascending'
+      @videos = Video.order(:created_at)
+    elsif params[:sort_by_date] == 'descending'
+      @videos = Video.order('created_at DESC')
+    else
+      @videos = Video.all
     end
   end
 
