@@ -2,7 +2,8 @@
 <html>
 
 <head>
-		<title>WDInstagramRails</title>
+		<title>
+				<%= content_for? :page_title ? yield(:page_title) : "SEI22" %> | WDInstagramRails</title>
 		<%= csrf_meta_tags %>
 		<%= csp_meta_tag %>
 		<%= stylesheet_link_tag    'application', media: 'all' %>
