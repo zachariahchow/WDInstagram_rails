@@ -12,6 +12,8 @@ class PostsController < ApplicationController
     else
       @posts = Post.all
     end
+
+    @form_url = "/posts"
   end
 
   # GET /posts/1

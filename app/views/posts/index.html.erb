@@ -39,7 +39,7 @@
 				</tr>
 				<% end %>
 		</tbody>
-		<%= render partial: "sort_form" %>
+		<%= render partial: "layouts/sort_form", locals: {form_url: @form_url} %>
 </table>
 <br>
 <%= link_to 'New Post', new_post_path %>

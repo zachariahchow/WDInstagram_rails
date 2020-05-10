@@ -11,6 +11,8 @@ class VideosController < ApplicationController
     else
       @videos = Video.all
     end
+
+    @form_url = "/videos"
   end
 
   # GET /videos/1
