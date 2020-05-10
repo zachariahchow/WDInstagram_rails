@@ -11,11 +11,13 @@
 </p>
 <p>
 		<strong>Video:</strong>
-		<% if @video_exists%>
-		<iframe src='https://www.youtube.com/embed/<%= @youtube_id %>?rel=0&autoplay=<%= params[:autoplay] || 0 %>' frameborder='0' allowfullscreen></iframe>
-		<% else %>
-		<div>No Video</div>
-		<% end %>
+		<div class="iframe__container">
+				<% if @video_exists%>
+				<iframe src='https://www.youtube.com/embed/<%= @youtube_id %>?rel=0&autoplay=<%= params[:autoplay] || 0 %>' frameborder='0' allowfullscreen></iframe>
+				<% else %>
+				<div>No Video</div>
+				<% end %>
+		</div>
 </p>
 <p>
 		<strong>Caption:</strong>

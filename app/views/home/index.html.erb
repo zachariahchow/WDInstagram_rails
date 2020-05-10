@@ -1,0 +1,7 @@
+<div class="iframes__container">
+		<% @youtube_ids.each do |id| %>
+		<div class="iframe__container">
+				<iframe src='https://www.youtube.com/embed/<%= id %>?rel=0&autoplay=<%= params[:autoplay] || 0 %>' frameborder='0' allowfullscreen></iframe>
+		</div>
+		<% end %>
+</div>

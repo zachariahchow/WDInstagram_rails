@@ -14,6 +14,8 @@ class PostsController < ApplicationController
     end
 
     @form_url = "/posts"
+
+    @links = [{:name => "Home", :path => root_path}, {:name => "Videos", :path => videos_path}]
   end
 
   # GET /posts/1
@@ -25,9 +27,6 @@ class PostsController < ApplicationController
       url.is_a?(URI::HTTP) && !url.host.nil?
       rescue URI::InvalidURIError
       false
-      # http = Net::HTTP.start(url.host, url.port)
-
-      # http.head(url.request_uri)['Content-Type'].start_with? 'image'
     end
 
     @post = Post.find(params[:id])
@@ -36,15 +35,21 @@ class PostsController < ApplicationController
       @image_exists = true
     end
 
+    @links = [{:name => "Home", :path => root_path}, {:name => "Back to Posts", :path => posts_path}]
+
   end
 
   # GET /posts/new
   def new
     @post = Post.new
+
+    @links = [{:name => "Home", :path => root_path}, {:name => "Back to Posts", :path => posts_path}]
   end
 
   # GET /posts/1/edit
   def edit
+
+    @links = [{:name => "Home", :path => root_path}, {:name => "Back to Posts", :path => posts_path}]
   end
 
   # POST /posts

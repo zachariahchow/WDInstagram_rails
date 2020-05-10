@@ -13,6 +13,8 @@ class VideosController < ApplicationController
     end
 
     @form_url = "/videos"
+
+    @links = [{:name => "Home", :path => root_path}, {:name => "Posts", :path => posts_path}]
   end
 
   # GET /videos/1
@@ -23,7 +25,6 @@ class VideosController < ApplicationController
       url.is_a?(URI::HTTP) && !url.host.nil?
       rescue URI::InvalidURIError
       false
-
     end
 
     @video = Video.find(params[:id])
@@ -32,15 +33,21 @@ class VideosController < ApplicationController
       @video_exists = true
       @youtube_id = @video[:video_url].split('=')[1]
     end
+
+    @links = [{:name => "Home", :path => root_path}, {:name => "Back to Videos", :path => videos_path}]
   end
 
   # GET /videos/new
   def new
     @video = Video.new
+
+    @links = [{:name => "Home", :path => root_path}, {:name => "Back to Videos", :path => videos_path}]
   end
 
   # GET /videos/1/edit
   def edit
+
+    @links = [{:name => "Home", :path => root_path}, {:name => "Back to Videos", :path => videos_path}]
   end
 
   # POST /videos
@@ -57,6 +64,8 @@ class VideosController < ApplicationController
         format.json { render json: @video.errors, status: :unprocessable_entity }
       end
     end
+
+    @links = [{:name => "Home", :path => root_path}, {:name => "Back to Videos", :path => videos_path}]
   end
 
   # PATCH/PUT /videos/1
